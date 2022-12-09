@@ -571,7 +571,7 @@ border-image-slice: 1;
     margin-top: 10px;
   }
   }
-  @media (max-width:800px){
+  @media(max-width:800px){
       .checkbtn{
           display:block;
       }
@@ -586,7 +586,6 @@ border-image-slice: 1;
           left:-100%;
           text-align:center;
   				transition:all .5s ease;
-
       }
       .hero nav ul li{
           display:block;
