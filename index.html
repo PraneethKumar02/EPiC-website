@@ -178,22 +178,26 @@
      </div>
 </div>
 <!--Contact Us-->
-<section class="contact" id="contact-us">
-  <div class="contact-page">
-    <div class="contact-map">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.082669873114!2d80.13515541482057!3d12.837934290943682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525851fbcd3b6b%3A0x9f1067aa71e3898e!2sIndian%20Institute%20of%20Information%20Technology%2C%20Design%20and%20Manufacturing%2C%20Kancheepuram!5e0!3m2!1sen!2sin!4v1657596643923!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <section class="contact-us" id="contact-us">
+    <div class="contact-page">
+      <div class="contact-map">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3890.082669873114!2d80.13515541482057!3d12.837934290943682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525851fbcd3b6b%3A0x9f1067aa71e3898e!2sIndian%20Institute%20of%20Information%20Technology%2C%20Design%20and%20Manufacturing%2C%20Kancheepuram!5e0!3m2!1sen!2sin!4v1657596643923!5m2!1sen!2sin"
+          width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="contact-form">
+        <h1>Contact Us</h1>
+        <h6 id = "msg"></h1>
+        <form action="https://script.google.com/macros/s/AKfycbxoYPSjshNW1wFn_4GjaYnFP84qvuLNHeTX3Nn8B3v5UyW39KrR6C98s13LB9iaRpfx/exec" method="post">
+          <input type="text" placeholder="Name" class="contact-form-txt" />
+          <input type="email" placeholder="E-Mail" class="contact-form-txt" />
+          <textarea placeholder="Message" class="contact-form-txtarea"></textarea>
+          <input type="submit" placeholder="Submit" class="contact-form-btn" id="sub"/>
+        </form>
+      </div>
     </div>
-    <div class="contact-form">
-      <h1>Contact Us</h1>
-      <form>
-        <input type="text" placeholder="Name" class="contact-form-txt"/>
-        <input type="text" placeholder="E-Mail" class="contact-form-txt"/>
-        <textarea placeholder="Message" class="contact-form-txtarea"></textarea>
-        <input type="submit" placeholder="Submit" class="contact-form-btn"/>
-      </form>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- footer -->
   <section id="footer-section">
@@ -249,6 +253,24 @@
         nav.classList.remove('scroll');
       }
     });
+  </script>
+  
+    <script>
+    let form = document.querySelector("form");
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      document.querySelector("#sub").value="Submitting...";
+      let data = new FormData(form);
+      fetch('https://script.google.com/macros/s/AKfycbxoYPSjshNW1wFn_4GjaYnFP84qvuLNHeTX3Nn8B3v5UyW39KrR6C98s13LB9iaRpfx/exec', {
+        method: "POST",
+        body: data
+      })
+      .then(res => res.text())
+      .then(data => {
+        document.querySelector("#msg").innerHTML = data;
+        document.querySelector("#sub").value = "Submit"
+      });
+    })
   </script>
 </body>
 
